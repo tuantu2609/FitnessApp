@@ -1,0 +1,43 @@
+<manifest package="com.example.fitnesstrackerapp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Fitness Tracker"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FitnessTrackerApp">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.StepBackgroundService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service
+            android:name=".service.StepForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync"/>
+
+        <service
+            android:name=".service.StepBoundService"
+            android:enabled="true"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
